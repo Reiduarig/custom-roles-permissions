@@ -82,8 +82,8 @@
         ],
         "fix": [
             "@pint",
-            "@insights:fix",
-            "@rector"
+            "@rector",
+            "@insights"
         ],
         "pint": "vendor/bin/pint",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
