@@ -73,7 +73,22 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
-        ]
+        ],
+        "analyse": [
+            "@phpstan",
+            "@insights",
+            "@rector --dry-run"
+        ],
+        "fix": [
+            "@pint",
+            "@insights:fix",
+            "@rector"
+        ],
+        "pint": "vendor/bin/pint",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
+        "insights": "vendor/bin/phpinsights analyse --no-interaction --min-quality=90 --min-complexity=90 --min-architecture=85 --min-style=95",
+        "insights:fix": "vendor/bin/phpinsights analyse --no-interaction --fix",
+        "rector": "vendor/bin/rector"
     },
     "extra": {
         "laravel": {
