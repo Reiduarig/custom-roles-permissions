@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,11 +15,15 @@ class Role extends Model
 
     // Define role constants SLUGS
     public const SUPER_ADMIN = 'super-admin';
+
     public const ADMIN = 'admin';
+
     public const USER = 'user';
 
     public const NIVEL_SUPER_ADMIN = 100;
+
     public const NIVEL_ADMIN = 50;
+
     public const NIVEL_USER = 10;
 
     /**
@@ -25,7 +31,6 @@ class Role extends Model
      *
      * @var list<string>
      */
-
     protected $fillable = [
         'name',
         'slug',
@@ -34,19 +39,19 @@ class Role extends Model
 
     /**
      * The users that belong to the role.
+     *
      * @return BelongsToMany<User, $this>
-    */
-
-    public function  users(): BelongsToMany
+     */
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
 
     /**
      * The permissions that belong to the role.
+     *
      * @return BelongsToMany<Permission, $this>
-    */
-
+     */
     public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class);
